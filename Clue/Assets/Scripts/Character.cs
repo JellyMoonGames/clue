@@ -30,8 +30,10 @@ public class Character : MonoBehaviour
 
     #region Private Variables
 
-    private Tile currentTile;
-    private Tile previousTile;
+    //TO-DO: MAKE THESE PUBLIC PROPERTIES ONCE THEY DON'T HAVE TO BE SET IN THE INSPECTOR
+    [SerializeField] private Tile currentTile;
+    [SerializeField] private Tile previousTile;
+
     private Stack<Tile> tileStack = new Stack<Tile>();
 
     #endregion
