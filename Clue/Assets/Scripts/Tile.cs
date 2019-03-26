@@ -45,6 +45,7 @@ public class Tile : MonoBehaviour
             default     : targetTile = null;            break;
         }
 
+        // TO-DO: PLAY SOUND EFFECT TO SHOW THE PLAYER THEY CAN'T MOVE IN THAT DIRECTION 
         if(targetTile == null) Debug.LogError("A neighbour in the direction specified could not be found");
 
         return targetTile;
@@ -54,10 +55,7 @@ public class Tile : MonoBehaviour
     {
         // Assign the 'CharacterSlot' to the parameter given if it isn't already occupied.
 
-        if(IsOccupied == false)
-        {
-            CharacterSlot = character;
-        }
+        CharacterSlot = character;
     }
 
     #endregion

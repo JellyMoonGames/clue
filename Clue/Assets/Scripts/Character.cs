@@ -30,7 +30,7 @@ public class Character : MonoBehaviour
 
     #region Private Variables
 
-    //TO-DO: MAKE THESE PUBLIC PROPERTIES ONCE THEY DON'T HAVE TO BE SET IN THE INSPECTOR
+    // TO-DO: MAKE THESE PUBLIC PROPERTIES ONCE THEY DON'T HAVE TO BE SET IN THE INSPECTOR
     [SerializeField] private Tile currentTile;
     [SerializeField] private Tile previousTile;
 
@@ -44,12 +44,14 @@ public class Character : MonoBehaviour
         transform.position = currentTile.transform.position;
 
         previousTile = currentTile;
+        currentTile.SetCharacter(this);
         tileStack.Push(currentTile);
     }
 
     private void Update()
     {
         // Temporary input control to test character movement
+
         if(Input.GetButtonDown("Up"))           Move(currentTile.GetNeighbour("Up"));
         else if(Input.GetButtonDown("Down"))    Move(currentTile.GetNeighbour("Down"));
         else if(Input.GetButtonDown("Left"))    Move(currentTile.GetNeighbour("Left"));
@@ -64,7 +66,7 @@ public class Character : MonoBehaviour
 
         if(targetTile == null || IsMoving) return false;
 
-        // TO-DO : FIX BUG WHERE PREVIOUS TILE ISN'T CORRECT
+        // TO-DO: FIX BUG WHERE PREVIOUS TILE ISN'T CORRECT
         #region Assign Previous Tile
 
         Tile tempCurrentTile = tileStack.Peek();
@@ -90,7 +92,10 @@ public class Character : MonoBehaviour
             Debug.Log("FORWARD");
         }
 
+        currentTile.SetCharacter(null);
         currentTile = tileStack.Peek();
+        currentTile.SetCharacter(this);
+
         StartCoroutine(Movement(currentTile.transform.position, 0.15f));
 
         return true;
