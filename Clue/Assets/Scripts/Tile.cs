@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    /* Summary
-     * This is the class that represents all of the tiles that
-     * will be present on the game board.
-     * 
-     * Author - Daniel Kean
-    */
+    /// <summary>
+    /// This represents all of the tiles that will make
+    /// up the game board.
+    /// 
+    /// Author - Daniel Kean
+    /// </summary>
 
     #region Public Properties
 

@@ -5,9 +5,11 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     /// <summary>
-    /// This represents the Rooms that will be on the game board.
+    /// This represents the rooms that will be on the game board.
     /// It is responsible for storing all of the current weapons
     /// and players that are in the room.
+    /// 
+    /// Author - Daniel Kean
     /// </summary>
 
     #region Public Properties

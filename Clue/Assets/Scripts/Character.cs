@@ -6,12 +6,12 @@ public enum PlayerType { Player, AI, NonPlaying };
 
 public class Character : MonoBehaviour
 {
-    /* Summary
-     * This is the class that represents each character
-     * that is in the game.
-     * 
-     * Author - Daniel Kean
-    */
+    /// <summary>
+    /// This represents each character that will be present 
+    /// on the board.
+    /// 
+    /// Author - Daniel Kean
+    /// </summary>
 
     #region Public Properties
 
