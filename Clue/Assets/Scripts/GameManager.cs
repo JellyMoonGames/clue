@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { PlayerTurn, Guessing }
+public enum GameState { PlayerTurn, Guessing, GameOver }
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 
     public static List<Character> Characters = new List<Character>();
     public static List<Weapon> Weapons = new List<Weapon>();
+    public static Guess CorrectGuess;
 
     #endregion
 }

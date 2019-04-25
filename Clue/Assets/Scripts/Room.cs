@@ -16,6 +16,7 @@ public class Room : MonoBehaviour
 
     // TO-DO: ADD A LIST FOR THE CURRENT WEAPONS ONCE ITS CLASS HAS BEEN CREATED
     public List<Character> CurrentCharacters { get; private set; } = new List<Character>();
+    public List<Weapon> CurrentWeapons { get; private set; } = new List<Weapon>();
 
     #endregion
 
@@ -34,7 +35,7 @@ public class Room : MonoBehaviour
 
     public void RemoveCharacter(Character character)
     {
-        if(CurrentCharacters.Contains(character))
+        if(CurrentCharacters.Contains(character) == false)
         {
             Debug.LogError("The character wasn't in the room");
             return;
@@ -43,7 +44,21 @@ public class Room : MonoBehaviour
         CurrentCharacters.Remove(character);
     }
 
-    // TO-DO: IMPLEMENT 'AddCharacters' METHOD ONCE A WEAPON CLASS HAS BEEN CREATED
+    public void AddWeapon(Weapon weapon)
+    {
+        CurrentWeapons.Add(weapon);
+    }
+
+    public void RemoveWeapon(Weapon weapon)
+    {
+        if(CurrentWeapons.Contains(weapon) == false)
+        {
+            Debug.LogError("The weapon wasn't in the room");
+            return;
+        }
+
+        CurrentWeapons.Remove(weapon);
+    }
 
     #endregion
 }
