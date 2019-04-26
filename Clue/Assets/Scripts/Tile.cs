@@ -20,10 +20,10 @@ public class Tile : MonoBehaviour
 
     #region Inspector Variables
 
-    [SerializeField] private Tile upNeighbour;
-    [SerializeField] private Tile downNeighbour;
-    [SerializeField] private Tile leftNeighbour;
-    [SerializeField] private Tile rightNeighbour;
+    [SerializeField] protected Tile upNeighbour;
+    [SerializeField] protected Tile downNeighbour;
+    [SerializeField] protected Tile leftNeighbour;
+    [SerializeField] protected Tile rightNeighbour;
 
     #endregion
 

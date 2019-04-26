@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomTile : MonoBehaviour
+public class RoomTile : Tile
 {
     [SerializeField] private Room attachedRoom;
 
