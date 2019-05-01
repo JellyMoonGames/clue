@@ -123,5 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6bfe9984aa3d0346bf26db63176a3c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Test Character
+  characterName: Default Character Name
   characterImage: {fileID: 0}
+  currentTile: {fileID: 0}
+  previousTile: {fileID: 0}

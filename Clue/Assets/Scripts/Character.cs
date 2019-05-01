@@ -15,9 +15,12 @@ public class Character : MonoBehaviour
 
     #region Public Properties
 
+    public string Name { get { return characterName; } set { characterName = value; } }
     public PlayerType Type { get; private set; }
     public bool IsMoving { get; private set; }
     public int CurrentNumberOfMoves { get { return tileStack.Count - 1; } }
+    public Tile CurrentTile { get; private set; }
+    public Tile PreviousTile { get; private set; }
 
     #endregion
 
@@ -30,32 +33,31 @@ public class Character : MonoBehaviour
 
     #region Private Variables
 
-    // TO-DO: MAKE THESE PUBLIC PROPERTIES ONCE THEY DON'T HAVE TO BE SET IN THE INSPECTOR
-    [SerializeField] private Tile currentTile;
-    [SerializeField] private Tile previousTile;
-
     private Stack<Tile> tileStack = new Stack<Tile>();
 
     #endregion
 
+    #region Methods
+
     private void Start()
     {
         IsMoving = false;
-        transform.position = currentTile.transform.position;
+        transform.position = CurrentTile.transform.position;
 
-        previousTile = currentTile;
-        currentTile.SetCharacter(this);
-        tileStack.Push(currentTile);
+        PreviousTile = CurrentTile;
+        CurrentTile.SetCharacter(this);
+        tileStack.Push(CurrentTile);
     }
 
     private void Update()
     {
-        // Temporary input control to test character movement
+        // Return from the update if this isn't this character's turn.
+        if((TurnManager.CurrentCharacter.Name == Name) == false) return;
 
-        if(Input.GetButtonDown("Up"))           Move(currentTile.GetNeighbour("Up"));
-        else if(Input.GetButtonDown("Down"))    Move(currentTile.GetNeighbour("Down"));
-        else if(Input.GetButtonDown("Left"))    Move(currentTile.GetNeighbour("Left"));
-        else if(Input.GetButtonDown("Right"))   Move(currentTile.GetNeighbour("Right"));
+        if(Input.GetButtonDown("Up"))           Move(CurrentTile.GetNeighbour("Up"));
+        else if(Input.GetButtonDown("Down"))    Move(CurrentTile.GetNeighbour("Down"));
+        else if(Input.GetButtonDown("Left"))    Move(CurrentTile.GetNeighbour("Left"));
+        else if(Input.GetButtonDown("Right"))   Move(CurrentTile.GetNeighbour("Right"));
     }
 
     public bool Move(Tile targetTile)
@@ -73,15 +75,15 @@ public class Character : MonoBehaviour
 
         tileStack.Pop();
 
-        if(tileStack.Count > 0) previousTile = tileStack.Peek();
-        else previousTile = currentTile;
+        if(tileStack.Count > 0) PreviousTile = tileStack.Peek();
+        else PreviousTile = CurrentTile;
 
         tileStack.Push(tempCurrentTile);
-        currentTile = tileStack.Peek();
+        CurrentTile = tileStack.Peek();
 
         #endregion
 
-        if(targetTile == previousTile)
+        if(targetTile == PreviousTile)
         {
             tileStack.Pop();
             Debug.Log("PREVIOUS");
@@ -92,11 +94,11 @@ public class Character : MonoBehaviour
             Debug.Log("FORWARD");
         }
 
-        currentTile.SetCharacter(null);
-        currentTile = tileStack.Peek();
-        currentTile.SetCharacter(this);
+        CurrentTile.SetCharacter(null);
+        CurrentTile = tileStack.Peek();
+        CurrentTile.SetCharacter(this);
 
-        StartCoroutine(Movement(currentTile.transform.position, 0.15f));
+        StartCoroutine(Movement(CurrentTile.transform.position, 0.15f));
 
         return true;
     }
@@ -120,4 +122,6 @@ public class Character : MonoBehaviour
 
         IsMoving = false;
     }
+
+    #endregion
 }

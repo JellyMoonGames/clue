@@ -16,9 +16,34 @@ public class GameManager : MonoBehaviour
 
     #region Public Properties
 
-    public static List<Character> Characters = new List<Character>();
+    public static Character[] Characters = new Character[6];
     public static List<Weapon> Weapons = new List<Weapon>();
     public static Guess CorrectGuess;
+
+    #endregion
+
+    #region Methods
+
+    private void Awake()
+    {
+        FindCharacters();
+    }
+
+    private static void FindCharacters()
+    {
+        Character[] characters = FindObjectsOfType<Character>();
+
+        for(int i = 0; i < characters.Length; i++)
+        {
+            // Defines the order in which characters have their turns.
+            if(characters[i].Name == "Miss Scarlett")           Characters[0] = characters[i];
+            else if(characters[i].Name == "Colonel Mustard")    Characters[1] = characters[i];
+            else if(characters[i].Name == "Professor Plum")     Characters[2] = characters[i];
+            else if(characters[i].Name == "Mr Green")           Characters[3] = characters[i];
+            else if(characters[i].Name == "Mrs White")          Characters[4] = characters[i];
+            else if(characters[i].Name == "Mrs Peacock")        Characters[5] = characters[i];
+        }
+    }
 
     #endregion
 }

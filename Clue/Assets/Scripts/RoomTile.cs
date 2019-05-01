@@ -4,7 +4,18 @@ using UnityEngine;
 
 public class RoomTile : Tile
 {
+    /// <summary>
+    /// Represents the tiles that allows a character to
+    /// enter a room.
+    /// </summary>
+
+    #region Inspector Variables
+
     [SerializeField] private Room attachedRoom;
+
+    #endregion
+
+    #region Methods
 
     public void EnterRoom(Character character)
     {
@@ -16,4 +27,6 @@ public class RoomTile : Tile
 
         attachedRoom.AddCharacter(character);
     }
+
+    #endregion
 }
