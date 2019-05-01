@@ -69,7 +69,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 07e7f7ff2a83b284e8a15b9d3e38a32a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.72302264, g: 1, b: 0.514151, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -88,9 +88,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6409279780758963082}
-  - component: {fileID: 3396315979117216821}
+  - component: {fileID: 338400762303455124}
   m_Layer: 0
-  m_Name: prefab_RoomTile
+  m_Name: prefab_StartTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,7 +103,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9007433890508580760}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -111,7 +111,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3396315979117216821
+--- !u!114 &338400762303455124
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,11 +120,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9007433890508580760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d357dc1cb6154da448135500ebe36c10, type: 3}
+  m_Script: {fileID: 11500000, guid: 003581940c415574fb3e9238e1143b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   upNeighbour: {fileID: 0}
   downNeighbour: {fileID: 0}
   leftNeighbour: {fileID: 0}
   rightNeighbour: {fileID: 0}
-  attachedRoom: {fileID: 0}

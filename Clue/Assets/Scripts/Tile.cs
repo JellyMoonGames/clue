@@ -46,7 +46,7 @@ public class Tile : MonoBehaviour
         }
 
         // TO-DO: PLAY SOUND EFFECT TO SHOW THE PLAYER THEY CAN'T MOVE IN THAT DIRECTION 
-        if(targetTile == null) Debug.LogError("A neighbour in the direction specified could not be found");
+        //if(targetTile == null) Debug.Log("A neighbour in the direction specified could not be found");
 
         return targetTile;
     }

@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     #region Public Properties
 
     public static Character[] Characters = new Character[6];
+    public static Room[] Rooms = new Room[9];
     public static List<Weapon> Weapons = new List<Weapon>();
     public static Guess CorrectGuess;
 
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         FindCharacters();
+        FindRooms();
     }
 
     private static void FindCharacters()
@@ -43,6 +45,11 @@ public class GameManager : MonoBehaviour
             else if(characters[i].Name == "Mrs White")          Characters[4] = characters[i];
             else if(characters[i].Name == "Mrs Peacock")        Characters[5] = characters[i];
         }
+    }
+
+    private static void FindRooms()
+    {
+        Rooms = FindObjectsOfType<Room>();
     }
 
     #endregion

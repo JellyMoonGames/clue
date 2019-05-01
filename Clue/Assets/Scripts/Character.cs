@@ -19,7 +19,7 @@ public class Character : MonoBehaviour
     public PlayerType Type { get; private set; }
     public bool IsMoving { get; private set; }
     public int CurrentNumberOfMoves { get { return tileStack.Count - 1; } }
-    public Tile CurrentTile { get; private set; }
+    public Tile CurrentTile { get; set; }
     public Tile PreviousTile { get; private set; }
 
     #endregion
@@ -42,7 +42,6 @@ public class Character : MonoBehaviour
     private void Start()
     {
         IsMoving = false;
-        transform.position = CurrentTile.transform.position;
 
         PreviousTile = CurrentTile;
         CurrentTile.SetCharacter(this);
