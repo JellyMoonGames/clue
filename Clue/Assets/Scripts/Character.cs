@@ -102,7 +102,7 @@ public class Character : MonoBehaviour
         return true;
     }
 
-    private IEnumerator Movement(Vector3 target, float duration)
+    public IEnumerator Movement(Vector3 target, float duration)
     {
         // This is a method to move the character over time to a target position at a
         // speed set by the 'duration' parameter.

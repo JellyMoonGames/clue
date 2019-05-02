@@ -23,6 +23,7 @@ public class Room : MonoBehaviour
     #region Inspector Variables
 
     [SerializeField] private string roomName = "Default Room Name";
+    [SerializeField] private Transform[] objectPositions;
 
     #endregion
 
@@ -31,6 +32,8 @@ public class Room : MonoBehaviour
     public void AddCharacter(Character character)
     {
         CurrentCharacters.Add(character);
+        // TO-DO: FIX THIS SO PLAYERS CAN EXIT ROOMS
+        character.CurrentTile = null;
     }
 
     public void RemoveCharacter(Character character)
@@ -58,6 +61,17 @@ public class Room : MonoBehaviour
         }
 
         CurrentWeapons.Remove(weapon);
+    }
+
+    public Transform GetRandomObjectPosition()
+    {
+        if(objectPositions.Length == 0)
+        {
+            Debug.LogError("There are no object positions for: " + roomName);
+            return null;
+        }
+
+        return objectPositions[Random.Range(0, objectPositions.Length - 1)];
     }
 
     #endregion

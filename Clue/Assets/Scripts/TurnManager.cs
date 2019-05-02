@@ -37,8 +37,8 @@ public class TurnManager : MonoBehaviour
     {
         if(CurrentCharacter.CurrentTile.GetType() == typeof(RoomTile))
         {
-            // TO-DO: ENTER THE CURRENT PLAYER INTO THE ROOM
-            Debug.Log("Enter the room");
+            RoomTile roomTile = CurrentCharacter.CurrentTile as RoomTile;
+            roomTile.EnterRoom(CurrentCharacter);
         }
 
         NextCharacter();

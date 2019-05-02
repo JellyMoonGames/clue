@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     #region Public Properties
 
+    public static GameState GameState;
     public static Character[] Characters = new Character[6];
     public static Room[] Rooms = new Room[9];
     public static List<Weapon> Weapons = new List<Weapon>();
