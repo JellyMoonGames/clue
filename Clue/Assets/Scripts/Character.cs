@@ -44,7 +44,7 @@ public class Character : MonoBehaviour
         IsMoving = false;
 
         PreviousTile = CurrentTile;
-        CurrentTile.SetCharacter(this);
+        CurrentTile.AddCharacter(this);
         tileStack.Push(CurrentTile);
     }
 
@@ -93,9 +93,9 @@ public class Character : MonoBehaviour
             Debug.Log("FORWARD");
         }
 
-        CurrentTile.SetCharacter(null);
+        CurrentTile.RemoveCharacter(this);
         CurrentTile = tileStack.Peek();
-        CurrentTile.SetCharacter(this);
+        CurrentTile.AddCharacter(this);
 
         StartCoroutine(Movement(CurrentTile.transform.position, 0.15f));
 

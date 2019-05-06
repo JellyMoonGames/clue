@@ -35,6 +35,12 @@ public class TurnManager : MonoBehaviour
 
     public void EndTurn()
     {
+        if(CurrentCharacter.CurrentTile.IsOccupied)
+        {
+            Debug.Log("This tile is occupied, please move somewhere else.");
+            return;
+        }
+
         if(CurrentCharacter.CurrentTile.GetType() == typeof(RoomTile))
         {
             RoomTile roomTile = CurrentCharacter.CurrentTile as RoomTile;
@@ -56,6 +62,8 @@ public class TurnManager : MonoBehaviour
         }
 
         CurrentCharacter = GameManager.Characters[currentIndex];
+
+        Debug.Log(CurrentCharacter);
     }
 
     #endregion

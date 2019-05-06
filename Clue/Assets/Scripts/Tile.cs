@@ -13,8 +13,8 @@ public class Tile : MonoBehaviour
 
     #region Public Properties
 
-    public Character CharacterSlot { get; private set; }
-    public bool IsOccupied { get { return CharacterSlot != null; } }
+    public List<Character> CurrentCharacters { get; private set; } = new List<Character>();
+    public bool IsOccupied { get { return CurrentCharacters.Count > 1; } }
 
     #endregion
 
@@ -28,6 +28,11 @@ public class Tile : MonoBehaviour
     #endregion
 
     #region Methods
+
+    protected void Awake()
+    {
+        AssignNeighbours();
+    }
 
     public Tile GetNeighbour(string neighbourDirection)
     {
@@ -51,11 +56,48 @@ public class Tile : MonoBehaviour
         return targetTile;
     }
 
-    public void SetCharacter(Character character)
+    private void AssignNeighbours()
+    {
+        // For each direction...
+        for(int d = 0; d < 4; d++)
+        {
+            Tile neighbour;
+            RaycastHit2D hit;
+
+            switch(d)
+            {
+                case 0:
+                    hit = Physics2D.CircleCast(transform.position + new Vector3(0f, 1f, 0f), 0.01f, Vector2.zero);
+                    if(hit) { neighbour = hit.transform.GetComponent<Tile>(); upNeighbour = neighbour; }
+                break;
+
+                case 1:
+                    hit = Physics2D.CircleCast(transform.position + new Vector3(0f, -1f, 0f), 0.01f, Vector2.zero);
+                    if(hit) { neighbour = hit.transform.GetComponent<Tile>(); downNeighbour = neighbour; }
+                    break;
+
+                case 2:
+                    hit = Physics2D.CircleCast(transform.position + new Vector3(-1f, 0f, 0f), 0.01f, Vector2.zero);
+                    if(hit) { neighbour = hit.transform.GetComponent<Tile>(); leftNeighbour = neighbour; }
+                    break;
+
+                case 3:
+                    hit = Physics2D.CircleCast(transform.position + new Vector3(1f, 0f, 0f), 0.01f, Vector2.zero);
+                    if(hit) { neighbour = hit.transform.GetComponent<Tile>(); rightNeighbour = neighbour; }
+                    break;
+            }
+        }
+    }
+
+    public void AddCharacter(Character character)
     {
         // Assign the 'CharacterSlot' to the parameter given if it isn't already occupied.
+        CurrentCharacters.Add(character);
+    }
 
-        CharacterSlot = character;
+    public void RemoveCharacter(Character character)
+    {
+        CurrentCharacters.Remove(character);
     }
 
     #endregion

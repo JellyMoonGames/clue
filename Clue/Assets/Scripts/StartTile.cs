@@ -11,11 +11,16 @@ public class StartTile : Tile
 
     #region Methods
 
+    private new void Awake()
+    {
+        base.Awake();
+    }
+
     public void SpawnCharacter(Character character)
     {
         Character characterClone = Instantiate(character, transform.position, Quaternion.identity);
         characterClone.CurrentTile = this;
-        SetCharacter(characterClone);
+        AddCharacter(characterClone);
 
         // TO-DO: SET UP CHARACTER PROPERTIES, I.E. IF THEY'RE PLAYER CONTROLLED OR AI.
     }

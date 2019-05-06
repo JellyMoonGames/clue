@@ -17,6 +17,11 @@ public class RoomTile : Tile
 
     #region Methods
 
+    private new void Awake()
+    {
+        base.Awake();
+    }
+
     public void EnterRoom(Character character)
     {
         if(attachedRoom == null)
@@ -27,6 +32,7 @@ public class RoomTile : Tile
 
         attachedRoom.AddCharacter(character);
         StartCoroutine(character.Movement(attachedRoom.GetRandomObjectPosition().position, 0.15f));
+        RemoveCharacter(character);
     }
 
     #endregion
