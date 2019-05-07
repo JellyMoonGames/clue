@@ -18,10 +18,16 @@ public class TurnManager : MonoBehaviour
     #region Private Variables
 
     private int currentIndex = -1;
+    private UIManager uiManager;
 
     #endregion
 
     #region Methods
+
+    private void Awake()
+    {
+        uiManager = GetComponent<UIManager>();
+    }
 
     private void Start()
     {
@@ -62,8 +68,6 @@ public class TurnManager : MonoBehaviour
         }
 
         CurrentCharacter = GameManager.Characters[currentIndex];
-
-        Debug.Log(CurrentCharacter);
     }
 
     #endregion

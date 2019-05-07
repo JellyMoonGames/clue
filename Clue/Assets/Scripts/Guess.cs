@@ -11,6 +11,7 @@ public class Guess : MonoBehaviour
 
     #region Public Properties
 
+    public Character Accuser { get; private set; } = null;
     public Character Character { get; private set; }
     public Weapon Weapon { get; private set; }
     public Room Room { get; private set; }

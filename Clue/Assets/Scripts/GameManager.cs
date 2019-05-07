@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum GameState { PlayerTurn, Guessing, GameOver }
 
@@ -25,14 +26,26 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    #region Events
+
+    public static UnityAction OnGameOver;
+
+    #endregion
+
     #region Methods
 
-    private void Update()
+    public static void MakeGuess(Guess guess)
     {
-        for(int i = 0; i < Characters.Length; i++)
+        if(guess.Character == CorrectGuess.Character && guess.Weapon == CorrectGuess.Weapon && guess.Room == CorrectGuess.Room)
         {
-            Debug.Log(Characters[i]);
+            Win(guess.Accuser);
         }
+    }
+
+    private static void Win(Character character)
+    {
+        GameState = GameState.GameOver;
+        OnGameOver();
     }
 
     #endregion
