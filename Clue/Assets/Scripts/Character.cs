@@ -51,7 +51,10 @@ public class Character : MonoBehaviour
     private void Update()
     {
         // Return from the update if this isn't this character's turn.
-        if((TurnManager.CurrentCharacter.Name == Name) == false) return;
+        if((TurnManager.CurrentCharacter.Name == Name) == false)
+        {
+            return;
+        }
 
         if(Input.GetButtonDown("Up"))           Move(CurrentTile.GetNeighbour("Up"));
         else if(Input.GetButtonDown("Down"))    Move(CurrentTile.GetNeighbour("Down"));
@@ -100,6 +103,12 @@ public class Character : MonoBehaviour
         StartCoroutine(Movement(CurrentTile.transform.position, 0.15f));
 
         return true;
+    }
+
+    public void ResetMoveCount()
+    {
+        tileStack.Clear();
+        tileStack.Push(CurrentTile);
     }
 
     public IEnumerator Movement(Vector3 target, float duration)

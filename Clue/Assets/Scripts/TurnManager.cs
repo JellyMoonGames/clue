@@ -12,6 +12,7 @@ public class TurnManager : MonoBehaviour
     #region Public Properties
 
     public static Character CurrentCharacter;
+    public static int CurrentRollAmount;
 
     #endregion
 
@@ -41,6 +42,12 @@ public class TurnManager : MonoBehaviour
 
     public void EndTurn()
     {
+        if(CurrentCharacter.CurrentNumberOfMoves > CurrentRollAmount)
+        {
+            Debug.Log("You have moved more tiles than you've rolled. please move back.");
+            return;
+        }
+
         if(CurrentCharacter.CurrentTile.IsOccupied)
         {
             Debug.Log("This tile is occupied, please move somewhere else.");
@@ -67,7 +74,9 @@ public class TurnManager : MonoBehaviour
             currentIndex++;
         }
 
+        if(CurrentCharacter) CurrentCharacter.ResetMoveCount();
         CurrentCharacter = GameManager.Characters[currentIndex];
+        CurrentRollAmount = Dealer.RollDice(); 
     }
 
     #endregion

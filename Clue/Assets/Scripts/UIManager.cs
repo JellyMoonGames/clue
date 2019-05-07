@@ -8,7 +8,8 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject detectivePanel;
     [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private Text currentCharacter;
+    [SerializeField] private Text currentCharacterText;
+    [SerializeField] private Text numberOfMovesText;
     [SerializeField] private Slider masterVolumeSlider;
     [SerializeField] private Slider musicVolumeSlider;
 
@@ -29,9 +30,9 @@ public class UIManager : MonoBehaviour
             if(pauseMenu) ToggleObject(pauseMenu);
         }
 
-        if(currentCharacter) currentCharacter.text = "CURRENT CHARACTER: " + TurnManager.CurrentCharacter.Name.ToUpper();
-
-        AudioListener.volume = masterVolumeSlider.value;
+        if(currentCharacterText) currentCharacterText.text = "CURRENT CHARACTER: " + TurnManager.CurrentCharacter.Name.ToUpper();
+        if(numberOfMovesText) numberOfMovesText.text = TurnManager.CurrentCharacter.CurrentNumberOfMoves.ToString() + "/" + TurnManager.CurrentRollAmount.ToString();
+        if(masterVolumeSlider) AudioListener.volume = masterVolumeSlider.value;
     }
 
     public void ToggleObject(GameObject gameObject)

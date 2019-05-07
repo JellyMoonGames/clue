@@ -28,9 +28,9 @@ public class BoardSetup : MonoBehaviour
     private void Start()
     {
         FindTiles();
+        FindRooms();
         CharacterSetup();
         FindCharacters();
-        FindRooms();
         WeaponSetup();
     }
 
