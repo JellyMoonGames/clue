@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Guess : MonoBehaviour
+public class Guess
 {
     /// <summary>
     /// Represents a guess that a player can make in the game and stores

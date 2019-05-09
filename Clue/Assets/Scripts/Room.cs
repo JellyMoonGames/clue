@@ -14,7 +14,6 @@ public class Room : MonoBehaviour
 
     #region Public Properties
 
-    // TO-DO: ADD A LIST FOR THE CURRENT WEAPONS ONCE ITS CLASS HAS BEEN CREATED
     public List<Character> CurrentCharacters { get; private set; } = new List<Character>();
     public List<Weapon> CurrentWeapons { get; private set; } = new List<Weapon>();
 
@@ -23,20 +22,37 @@ public class Room : MonoBehaviour
     #region Inspector Variables
 
     [SerializeField] private string roomName = "Default Room Name";
-    [SerializeField] private Transform[] objectPositions;
+    [SerializeField] private Room secretPassage;
+
+    #endregion
+
+    #region Private Variables
+
+    private RoomTile[] roomTiles;
 
     #endregion
 
     #region Methods
 
-    public void AddCharacter(Character character)
+    private void Awake()
     {
-        CurrentCharacters.Add(character);
-        // TO-DO: FIX THIS SO PLAYERS CAN EXIT ROOMS
-        character.CurrentTile = null;
+        roomTiles = transform.GetComponentsInChildren<RoomTile>(true);
     }
 
-    public void RemoveCharacter(Character character)
+    public void EnterRoom(Character character)
+    {
+        CurrentCharacters.Add(character);
+        character.CurrentTile.RemoveCharacter(character);
+
+        RoomTile roomTile = GetRandomRoomTile();
+        roomTile.AddBoardPiece(character);
+        character.IsInRoom = true;
+
+        StartCoroutine(Utilities.Movement(character, roomTile.transform.position, 0.15f));
+
+    }
+
+    public void LeaveRoom(Character character, Tile exitTile)
     {
         if(CurrentCharacters.Contains(character) == false)
         {
@@ -45,11 +61,18 @@ public class Room : MonoBehaviour
         }
 
         CurrentCharacters.Remove(character);
+
+        RoomTile roomTile = character.CurrentTile as RoomTile;
+        roomTile.RemoveCurrentBoardPiece();
+        character.IsInRoom = false;
+
+        character.Move(exitTile);
     }
 
     public void AddWeapon(Weapon weapon)
     {
         CurrentWeapons.Add(weapon);
+        StartCoroutine(Utilities.Movement(weapon, GetRandomRoomTile().transform.position, 0.15f));
     }
 
     public void RemoveWeapon(Weapon weapon)
@@ -63,15 +86,22 @@ public class Room : MonoBehaviour
         CurrentWeapons.Remove(weapon);
     }
 
-    public Transform GetRandomObjectPosition()
+    public RoomTile GetRandomRoomTile()
     {
-        if(objectPositions.Length == 0)
+        if(roomTiles.Length == 0)
         {
             Debug.LogError("There are no object positions for: " + roomName);
             return null;
         }
 
-        return objectPositions[Random.Range(0, objectPositions.Length - 1)];
+        RoomTile chosenRoomTile = roomTiles[Random.Range(0, roomTiles.Length - 1)];
+
+        while(chosenRoomTile.CurrentBoardPiece != null)
+        {
+            chosenRoomTile = roomTiles[Random.Range(0, roomTiles.Length - 1)];
+        }
+
+        return chosenRoomTile;
     }
 
     #endregion

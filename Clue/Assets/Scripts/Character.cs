@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum PlayerType { Player, AI, NonPlaying };
 
-public class Character : MonoBehaviour
+public class Character : BoardPiece
 {
     /// <summary>
     /// This represents each character that will be present 
@@ -17,10 +17,11 @@ public class Character : MonoBehaviour
 
     public string Name { get { return characterName; } set { characterName = value; } }
     public PlayerType Type { get; private set; }
-    public bool IsMoving { get; private set; }
+    public bool IsInRoom { get; set; }
     public int CurrentNumberOfMoves { get { return tileStack.Count - 1; } }
     public Tile CurrentTile { get; set; }
-    public Tile PreviousTile { get; private set; }
+    public Tile PreviousTile { get; set; }
+    public Motor Motor { get; set; }
 
     #endregion
 
@@ -41,6 +42,8 @@ public class Character : MonoBehaviour
 
     private void Start()
     {
+        //Debug.Log("Character Start: " + Name);
+
         IsMoving = false;
 
         PreviousTile = CurrentTile;
@@ -51,7 +54,7 @@ public class Character : MonoBehaviour
     private void Update()
     {
         // Return from the update if this isn't this character's turn.
-        if((TurnManager.CurrentCharacter.Name == Name) == false)
+        if((TurnManager.CurrentCharacter.Name == Name) == false || TurnManager.CurrentCharacter.IsInRoom)
         {
             return;
         }
@@ -100,7 +103,7 @@ public class Character : MonoBehaviour
         CurrentTile = tileStack.Peek();
         CurrentTile.AddCharacter(this);
 
-        StartCoroutine(Movement(CurrentTile.transform.position, 0.15f));
+        StartCoroutine(Utilities.Movement(this, CurrentTile.transform.position, 0.15f));
 
         return true;
     }
@@ -109,26 +112,7 @@ public class Character : MonoBehaviour
     {
         tileStack.Clear();
         tileStack.Push(CurrentTile);
-    }
-
-    public IEnumerator Movement(Vector3 target, float duration)
-    {
-        // This is a method to move the character over time to a target position at a
-        // speed set by the 'duration' parameter.
-
-        if(IsMoving) yield break;
-
-        IsMoving = true;
-        float counter = 0;
-
-        while(counter < duration)
-        {
-            counter += Time.deltaTime;
-            transform.position = Vector3.Lerp(transform.position, target, counter / duration);
-            yield return null;
-        }
-
-        IsMoving = false;
+        PreviousTile = CurrentTile;
     }
 
     #endregion

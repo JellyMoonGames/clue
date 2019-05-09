@@ -20,10 +20,16 @@ public class BoardSetup : MonoBehaviour
     #region Private Variables
 
     private int startTileIndexCount = 0;
+    private CharacterSelection characterSelection;
 
     #endregion
 
     #region Methods
+
+    private void Awake()
+    {
+        characterSelection = FindObjectOfType<CharacterSelection>();
+    }
 
     private void Start()
     {
@@ -47,7 +53,15 @@ public class BoardSetup : MonoBehaviour
             StartTile currentStartTile = startTiles[startTileIndexCount];
             startTileIndexCount++;
 
-            currentStartTile.SpawnCharacter(characters[i]); 
+            Motor motor = null;
+
+            foreach(Character chosenCharacter in CharacterSelection.ChosenCharacters)
+            {
+                if(characters[i].Name == chosenCharacter.Name) motor = new PlayerMotor();
+                else motor = new AIMotor();
+            }
+
+            currentStartTile.SpawnCharacter(characters[i], motor); 
         }
     }
 
@@ -65,9 +79,11 @@ public class BoardSetup : MonoBehaviour
             if(weaponList.Count <= 0) return;
 
             Weapon randomWeapon = weaponList[Random.Range(0, weaponList.Count - 1)];
-            Weapon weaponClone = Instantiate(randomWeapon, GameManager.Rooms[i].GetRandomObjectPosition().position, GameManager.Rooms[i].GetRandomObjectPosition().rotation);
+            RoomTile randomRoomTile = GameManager.Rooms[i].GetRandomRoomTile();
+
+            Weapon weaponClone = Instantiate(randomWeapon, randomRoomTile.transform.position, randomRoomTile.transform.rotation);
             GameManager.Rooms[i].AddWeapon(weaponClone);
-            weaponClone.transform.position = GameManager.Rooms[i].GetRandomObjectPosition().position;
+
             weaponList.Remove(randomWeapon);
         }
     }
@@ -75,6 +91,8 @@ public class BoardSetup : MonoBehaviour
     private static void FindCharacters()
     {
         Character[] characters = FindObjectsOfType<Character>();
+
+        //for(int i = 0; i < characters.Length; i++) Debug.Log(characters[i]);
 
         for(int i = 0; i < characters.Length; i++)
         {

@@ -521,14 +521,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1360143309, guid: 3d4b484956cbe3f4096daadd5d81638b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 906901710538322964, guid: 3d4b484956cbe3f4096daadd5d81638b,
         type: 3}
       propertyPath: roomName
       value: Ballroom
       objectReference: {fileID: 0}
-    - target: {fileID: 1360143309, guid: 3d4b484956cbe3f4096daadd5d81638b, type: 3}
+    - target: {fileID: 487720714142217198, guid: 3d4b484956cbe3f4096daadd5d81638b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5196578369017719621, guid: 3d4b484956cbe3f4096daadd5d81638b,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5196578369017719621, guid: 3d4b484956cbe3f4096daadd5d81638b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5322006481711973864, guid: 3d4b484956cbe3f4096daadd5d81638b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5322006481711973864, guid: 3d4b484956cbe3f4096daadd5d81638b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8741144334667091501, guid: 3d4b484956cbe3f4096daadd5d81638b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8741144334667091501, guid: 3d4b484956cbe3f4096daadd5d81638b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d4b484956cbe3f4096daadd5d81638b, type: 3}

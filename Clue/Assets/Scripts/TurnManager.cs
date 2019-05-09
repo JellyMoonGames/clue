@@ -19,16 +19,10 @@ public class TurnManager : MonoBehaviour
     #region Private Variables
 
     private int currentIndex = -1;
-    private UIManager uiManager;
 
     #endregion
 
     #region Methods
-
-    private void Awake()
-    {
-        uiManager = GetComponent<UIManager>();
-    }
 
     private void Start()
     {
@@ -48,16 +42,18 @@ public class TurnManager : MonoBehaviour
             return;
         }
 
-        if(CurrentCharacter.CurrentTile.IsOccupied)
+        if(CurrentCharacter.CurrentTile && CurrentCharacter.CurrentTile.IsOccupied)
         {
             Debug.Log("This tile is occupied, please move somewhere else.");
             return;
         }
 
-        if(CurrentCharacter.CurrentTile.GetType() == typeof(RoomTile))
+        if(CurrentCharacter.CurrentTile.GetType() == typeof(DoorTile))
         {
-            RoomTile roomTile = CurrentCharacter.CurrentTile as RoomTile;
-            roomTile.EnterRoom(CurrentCharacter);
+            DoorTile doorTile = CurrentCharacter.CurrentTile as DoorTile;
+            Room room = doorTile.attachedRoom;
+
+            room.EnterRoom(CurrentCharacter);
         }
 
         NextCharacter();

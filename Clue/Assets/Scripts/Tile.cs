@@ -20,10 +20,10 @@ public class Tile : MonoBehaviour
 
     #region Inspector Variables
 
-    [SerializeField] protected Tile upNeighbour;
-    [SerializeField] protected Tile downNeighbour;
-    [SerializeField] protected Tile leftNeighbour;
-    [SerializeField] protected Tile rightNeighbour;
+    protected Tile upNeighbour;
+    protected Tile downNeighbour;
+    protected Tile leftNeighbour;
+    protected Tile rightNeighbour;
 
     #endregion
 
@@ -93,11 +93,13 @@ public class Tile : MonoBehaviour
     {
         // Assign the 'CharacterSlot' to the parameter given if it isn't already occupied.
         CurrentCharacters.Add(character);
+        character.CurrentTile = this;
     }
 
     public void RemoveCharacter(Character character)
     {
         CurrentCharacters.Remove(character);
+        character.CurrentTile = null;
     }
 
     #endregion

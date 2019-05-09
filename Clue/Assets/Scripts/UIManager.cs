@@ -13,9 +13,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Slider masterVolumeSlider;
     [SerializeField] private Slider musicVolumeSlider;
 
+    CharacterSelection characterSelection;
+
     private void Awake()
     {
-
+        characterSelection = FindObjectOfType<CharacterSelection>();
     }
 
     private void Update()
@@ -27,7 +29,7 @@ public class UIManager : MonoBehaviour
 
         if(Input.GetButtonDown("Pause"))
         {
-            if(pauseMenu) ToggleObject(pauseMenu);
+            if(pauseMenu) ToggleObject(pauseMenu);          
         }
 
         if(currentCharacterText) currentCharacterText.text = "CURRENT CHARACTER: " + TurnManager.CurrentCharacter.Name.ToUpper();
@@ -48,6 +50,16 @@ public class UIManager : MonoBehaviour
     public void UpdateText(Text textObject, string text)
     {
         textObject.text = text;
+    }
+
+    public void ChooseCharacter(Character character)
+    {
+        if(CharacterSelection.CurrentNumberOfPlayers >= CharacterSelection.NumberOfPlayers) return;
+
+        CharacterSelection.ChosenCharacters.Add(character);
+        characterSelection.DisableCharacterButton(character.Name);
+
+        CharacterSelection.CurrentNumberOfPlayers++;
     }
 
     public void QuitGame()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public enum GameState { PlayerTurn, Guessing, GameOver }
+public enum GameState { PlayerTurn, Guessing, Interaction, GameOver }
 
 public class GameManager : MonoBehaviour
 {
@@ -33,6 +33,14 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Methods
+
+    private void Update()
+    {
+        /*foreach(Character character in Characters)
+        {
+            Debug.Log(character);
+        }*/
+    }
 
     public static void MakeGuess(Guess guess)
     {

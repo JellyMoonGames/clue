@@ -16,11 +16,11 @@ public class StartTile : Tile
         base.Awake();
     }
 
-    public void SpawnCharacter(Character character)
+    public void SpawnCharacter(Character character, Motor motor)
     {
         Character characterClone = Instantiate(character, transform.position, Quaternion.identity);
-        characterClone.CurrentTile = this;
         AddCharacter(characterClone);
+        characterClone.Motor = motor;
 
         // TO-DO: SET UP CHARACTER PROPERTIES, I.E. IF THEY'RE PLAYER CONTROLLED OR AI.
     }

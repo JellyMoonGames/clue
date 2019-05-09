@@ -4,36 +4,21 @@ using UnityEngine;
 
 public class RoomTile : Tile
 {
-    /// <summary>
-    /// Represents the tiles that allows a character to
-    /// enter a room.
-    /// </summary>
+    public BoardPiece CurrentBoardPiece { get; private set; }
 
-    #region Inspector Variables
-
-    [SerializeField] private Room attachedRoom;
-
-    #endregion
-
-    #region Methods
-
-    private new void Awake()
+    public void AddBoardPiece(BoardPiece boardPiece)
     {
-        base.Awake();
+        CurrentBoardPiece = boardPiece;
+
+        Character character = CurrentBoardPiece as Character;
+        if(character != null) character.CurrentTile = this;
     }
 
-    public void EnterRoom(Character character)
+    public void RemoveCurrentBoardPiece()
     {
-        if(attachedRoom == null)
-        {
-            Debug.LogError("There is no room assigned to this tile.");
-            return;
-        }
+        //Character character = CurrentBoardPiece as Character;
+        //if(character != null) character.CurrentTile = null;
 
-        attachedRoom.AddCharacter(character);
-        StartCoroutine(character.Movement(attachedRoom.GetRandomObjectPosition().position, 0.15f));
-        RemoveCharacter(character);
+        CurrentBoardPiece = null;
     }
-
-    #endregion
 }

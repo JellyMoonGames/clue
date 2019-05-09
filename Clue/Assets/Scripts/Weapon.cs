@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class Weapon : BoardPiece
 {
     /// <summary>
     /// This represents all the weapons that will be present
