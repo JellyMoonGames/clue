@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BoardSetup : MonoBehaviour
 {
+    // Author - Daniel Kean
+
     /// <summary>
     /// Manages how the board is set up and spawns in the
     /// characters around it.
@@ -40,6 +42,10 @@ public class BoardSetup : MonoBehaviour
         WeaponSetup();
     }
 
+    /// <summary>
+    /// Spawns all of the characters on their designated start tiles and
+    /// assigns the correct motors.
+    /// </summary>
     private void CharacterSetup()
     {
         if(startTiles.Length == 0)
@@ -65,6 +71,9 @@ public class BoardSetup : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Spawns all of the weapons into random rooms.
+    /// </summary>
     private void WeaponSetup()
     {
         List<Weapon> weaponList = new List<Weapon>();
@@ -88,11 +97,12 @@ public class BoardSetup : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Finds all of the characters that are in the game.
+    /// </summary>
     private static void FindCharacters()
     {
         Character[] characters = FindObjectsOfType<Character>();
-
-        //for(int i = 0; i < characters.Length; i++) Debug.Log(characters[i]);
 
         for(int i = 0; i < characters.Length; i++)
         {
@@ -106,11 +116,17 @@ public class BoardSetup : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Finds all of the rooms that are in the game.
+    /// </summary>
     public static void FindRooms()
     {
         GameManager.Rooms = FindObjectsOfType<Room>();
     }
 
+    /// <summary>
+    /// Finds all of the tiles that are in the game.
+    /// </summary>
     public static void FindTiles()
     {
         GameManager.Tiles = FindObjectsOfType<Tile>();

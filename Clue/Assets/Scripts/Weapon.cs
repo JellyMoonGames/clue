@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Weapon : BoardPiece
 {
+    // Author - Daniel Kean
+
     /// <summary>
     /// This represents all the weapons that will be present
     /// on the game board.

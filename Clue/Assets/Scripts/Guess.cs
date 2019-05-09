@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Guess
 {
+    // Author - Daniel Kean
+
     /// <summary>
     /// Represents a guess that a player can make in the game and stores
     /// the character, weapon and room that they have chosen.

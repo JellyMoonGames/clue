@@ -5,7 +5,23 @@ using UnityEngine.UI;
 
 public class CharacterSelection : MonoBehaviour
 {
+    // Author - Daniel Kean
+
+    /// <summary>
+    /// Manages what characters that the player selects when they're
+    /// setting up the board that should be player controlled.
+    /// </summary>
+
+    #region Static Variables
+
     public static List<Character> ChosenCharacters = new List<Character>();
+    public static int NumberOfPlayers = 0;
+    public static int CurrentNumberOfPlayers = 0;
+    public static bool HasSetNumberOfPlayers = false;
+
+    #endregion
+
+    #region Inspector Variables
 
     [SerializeField] private InputField numOfPlayersInputField;
     [SerializeField] private GameObject characterSelection;
@@ -17,10 +33,15 @@ public class CharacterSelection : MonoBehaviour
     [SerializeField] private GameObject greenButton;
     [SerializeField] private GameObject whiteButton;
 
-    public static int NumberOfPlayers = 0;
-    public static int CurrentNumberOfPlayers = 0;
+    #endregion
+
+    #region Private Variables
+
     private bool runOnce_DisableCharacterSelection = false;
-    public static bool HasSetNumberOfPlayers = false;
+
+    #endregion
+
+    #region Methods
 
     private void Awake()
     {
@@ -50,6 +71,10 @@ public class CharacterSelection : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets the number of characters that the player can
+    /// choose to be player controlled.
+    /// </summary>
     private void SetNumberOfPlayers(int amount)
     {
         if(amount < 0 || amount > 6) return;
@@ -60,6 +85,9 @@ public class CharacterSelection : MonoBehaviour
         HasSetNumberOfPlayers = true;
     }
 
+    /// <summary>
+    /// Disable the character button with the given character name.
+    /// </summary>
     public void DisableCharacterButton(string name)
     {
         switch(name)
@@ -72,4 +100,6 @@ public class CharacterSelection : MonoBehaviour
             case "Mrs Peacock"      : peacockButton.SetActive(false);   break;
         }
     }
+
+    #endregion
 }

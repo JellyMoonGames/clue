@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class AIMotor : Motor
 {
-
+    // Author - Daniel Kean
 }

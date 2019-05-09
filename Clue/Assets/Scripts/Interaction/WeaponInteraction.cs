@@ -4,7 +4,19 @@ using UnityEngine;
 
 public class WeaponInteraction : Interaction
 {
+    // Author - Daniel Kean
+
+    /// <summary>
+    /// Manages what happens when the player clicks on a weapon.
+    /// </summary>
+
+    #region Private Variables
+
     private Weapon weapon;
+
+    #endregion
+
+    #region Methods
 
     private void Awake()
     {
@@ -31,4 +43,6 @@ public class WeaponInteraction : Interaction
     {
 
     }
+
+    #endregion
 }

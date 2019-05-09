@@ -4,10 +4,27 @@ using UnityEngine;
 
 public class InteractionManager : MonoBehaviour
 {
+    // Author - Daniel Kean
+
+    /// <summary>
+    /// Manages what interactable objects have been clicked on by
+    /// the player and firing their corresponding methods.
+    /// </summary>
+
+    #region Inspector Variables
+
     [SerializeField] private LayerMask layerMask;
+
+    #endregion
+
+    #region Private Variables
 
     private RaycastHit hit;
     private Ray mouseRay;
+
+    #endregion
+
+    #region Methods
 
     private void Update()
     {
@@ -26,4 +43,6 @@ public class InteractionManager : MonoBehaviour
             }
         }
     }
+
+    #endregion
 }

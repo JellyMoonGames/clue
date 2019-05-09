@@ -4,7 +4,19 @@ using UnityEngine;
 
 public class DoorTileInteraction : Interaction
 {
+    // Author - Daniel Kean
+
+    /// <summary>
+    /// Manages what happens when the player clicks on a door tile.
+    /// </summary>
+
+    #region Private Variables
+
     private DoorTile doorTile;
+
+    #endregion
+
+    #region Methods
 
     private void Awake()
     {
@@ -20,4 +32,6 @@ public class DoorTileInteraction : Interaction
     {
         Debug.Log("ROOM TILE SECONDARY");
     }
+
+    #endregion
 }

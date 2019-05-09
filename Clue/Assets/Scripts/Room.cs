@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
+    // Author - Daniel Kean
+
     /// <summary>
     /// This represents the rooms that will be on the game board.
     /// It is responsible for storing all of the current weapons
     /// and players that are in the room.
-    /// 
-    /// Author - Daniel Kean
     /// </summary>
 
     #region Public Properties
@@ -39,6 +39,10 @@ public class Room : MonoBehaviour
         roomTiles = transform.GetComponentsInChildren<RoomTile>(true);
     }
 
+    /// <summary>
+    /// Add the passed in character into this room and move them to a
+    /// random room tile.
+    /// </summary>
     public void EnterRoom(Character character)
     {
         CurrentCharacters.Add(character);
@@ -52,6 +56,10 @@ public class Room : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Remove a character from this room and move them to the passed
+    /// in exit tile.
+    /// </summary>
     public void LeaveRoom(Character character, Tile exitTile)
     {
         if(CurrentCharacters.Contains(character) == false)
@@ -69,12 +77,18 @@ public class Room : MonoBehaviour
         character.Move(exitTile);
     }
 
+    /// <summary>
+    /// Add the passed in weapon to this room.
+    /// </summary>
     public void AddWeapon(Weapon weapon)
     {
         CurrentWeapons.Add(weapon);
         StartCoroutine(Utilities.Movement(weapon, GetRandomRoomTile().transform.position, 0.15f));
     }
 
+    /// <summary>
+    /// Remove the passed in weapon from this room.
+    /// </summary>
     public void RemoveWeapon(Weapon weapon)
     {
         if(CurrentWeapons.Contains(weapon) == false)
@@ -86,6 +100,9 @@ public class Room : MonoBehaviour
         CurrentWeapons.Remove(weapon);
     }
 
+    /// <summary>
+    /// Returns a random room tile that hasn't been occupied by another board piece.
+    /// </summary>
     public RoomTile GetRandomRoomTile()
     {
         if(roomTiles.Length == 0)

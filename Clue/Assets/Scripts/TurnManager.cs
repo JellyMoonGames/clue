@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
+    // Author - Daniel Kean
+
     /// <summary>
     /// Manages whose turn it is in the game and gives
     /// control to the next player after.
@@ -34,6 +36,9 @@ public class TurnManager : MonoBehaviour
         if(Input.GetKeyDown("space")) EndTurn();
     }
 
+    /// <summary>
+    /// Called when the character ends its turn and checks what tile it is on.
+    /// </summary>
     public void EndTurn()
     {
         if(CurrentCharacter.CurrentNumberOfMoves > CurrentRollAmount)
@@ -59,6 +64,9 @@ public class TurnManager : MonoBehaviour
         NextCharacter();
     }
 
+    /// <summary>
+    /// Assigns the current character to the next one in the character index.
+    /// </summary>
     private void NextCharacter()
     {
         if(currentIndex + 1 > GameManager.Characters.Length - 1)

@@ -7,12 +7,12 @@ public enum GameState { PlayerTurn, Guessing, Interaction, GameOver }
 
 public class GameManager : MonoBehaviour
 {
+    // Author - Daniel Kean
+
     /// <summary>
     /// This manages the game state and stores the global lists of
     /// characters and weapons. It also fires off events which other
     /// classes can react to.
-    /// 
-    /// Author - Daniel Kean
     /// </summary>
 
     #region Public Properties
@@ -34,14 +34,9 @@ public class GameManager : MonoBehaviour
 
     #region Methods
 
-    private void Update()
-    {
-        /*foreach(Character character in Characters)
-        {
-            Debug.Log(character);
-        }*/
-    }
-
+    /// <summary>
+    /// Compares the passed in guess with the correct guess.
+    /// </summary>
     public static void MakeGuess(Guess guess)
     {
         if(guess.Character == CorrectGuess.Character && guess.Weapon == CorrectGuess.Weapon && guess.Room == CorrectGuess.Room)
@@ -50,6 +45,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when a player makes a correct guess.
+    /// </summary>
     private static void Win(Character character)
     {
         GameState = GameState.GameOver;

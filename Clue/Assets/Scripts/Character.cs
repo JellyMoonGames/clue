@@ -6,11 +6,11 @@ public enum PlayerType { Player, AI, NonPlaying };
 
 public class Character : BoardPiece
 {
+    // Author - Daniel Kean
+
     /// <summary>
     /// This represents each character that will be present 
     /// on the board.
-    /// 
-    /// Author - Daniel Kean
     /// </summary>
 
     #region Public Properties
@@ -42,8 +42,6 @@ public class Character : BoardPiece
 
     private void Start()
     {
-        //Debug.Log("Character Start: " + Name);
-
         IsMoving = false;
 
         PreviousTile = CurrentTile;
@@ -65,15 +63,15 @@ public class Character : BoardPiece
         else if(Input.GetButtonDown("Right"))   Move(CurrentTile.GetNeighbour("Right"));
     }
 
+    /// <summary>
+    /// Moves this character to the target tile and keeps track of the
+    /// previous tiles that it has visited. Returns true if the character
+    /// successfully moved to the target tile.
+    /// </summary>
     public bool Move(Tile targetTile)
     {
-        // Move to the 'targetTile' and keep track of all of the previous
-        // tiles that the character has gone to in their turn. Returns true
-        // if the character moved successfully to the target tile.
-
         if(targetTile == null || IsMoving) return false;
 
-        // TO-DO: FIX BUG WHERE PREVIOUS TILE ISN'T CORRECT
         #region Assign Previous Tile
 
         Tile tempCurrentTile = tileStack.Peek();
@@ -108,6 +106,10 @@ public class Character : BoardPiece
         return true;
     }
 
+    /// <summary>
+    /// Resets the number of moves that the player has made
+    /// and clears the tile history.
+    /// </summary>
     public void ResetMoveCount()
     {
         tileStack.Clear();

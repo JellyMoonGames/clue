@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StartTile : Tile
 {
+    // Author - Daniel Kean
+
     /// <summary>
     /// Represents the tiles that characters will
     /// spwan on at the beginning of the game.
@@ -16,13 +18,14 @@ public class StartTile : Tile
         base.Awake();
     }
 
+    /// <summary>
+    /// Spawns the passed in character on this tile, being controlled by the passed in motor.
+    /// </summary>
     public void SpawnCharacter(Character character, Motor motor)
     {
         Character characterClone = Instantiate(character, transform.position, Quaternion.identity);
         AddCharacter(characterClone);
         characterClone.Motor = motor;
-
-        // TO-DO: SET UP CHARACTER PROPERTIES, I.E. IF THEY'RE PLAYER CONTROLLED OR AI.
     }
 
     #endregion

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-
+    // Author - Daniel Kean
 }

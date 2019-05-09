@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Utilities : MonoBehaviour
 {
+    // Author - Daniel Kean
+    
+    /// <summary>
+    /// Moves a board piece to a target position over a set duration.
+    /// </summary>
     public static IEnumerator Movement(BoardPiece boardPiece, Vector3 target, float duration)
     {
         // This is a method to move the character over time to a target position at a
@@ -22,5 +27,19 @@ public class Utilities : MonoBehaviour
         }
 
         boardPiece.IsMoving = false;
+    }
+
+    public static void ShuffleList<T>(List<T> list)
+    {
+        int n = list.Count;
+        while(n > 1)
+        {
+            n--;
+            int k = Random.Range(0, n + 1);
+
+            T value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
     }
 }

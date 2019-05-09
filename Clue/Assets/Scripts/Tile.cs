@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
+    // Author - Daniel Kean
+
     /// <summary>
     /// This represents all of the tiles that will make
     /// up the game board.
-    /// 
-    /// Author - Daniel Kean
     /// </summary>
 
     #region Public Properties
@@ -34,6 +34,9 @@ public class Tile : MonoBehaviour
         AssignNeighbours();
     }
 
+    /// <summary>
+    /// Return a specific neighbour tile based on the direction given.
+    /// </summary>
     public Tile GetNeighbour(string neighbourDirection)
     {
         // Return a specific neighbour of this tile based on the parameter 'neighbourDirection'
@@ -56,6 +59,9 @@ public class Tile : MonoBehaviour
         return targetTile;
     }
 
+    /// <summary>
+    /// Finds all of the tile's neighbours and assigns them to the correct directions.
+    /// </summary>
     private void AssignNeighbours()
     {
         // For each direction...
@@ -89,6 +95,10 @@ public class Tile : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Adds the passed in character to this tile and sets the character's
+    /// current tile to this tile.
+    /// </summary>
     public void AddCharacter(Character character)
     {
         // Assign the 'CharacterSlot' to the parameter given if it isn't already occupied.
@@ -96,6 +106,10 @@ public class Tile : MonoBehaviour
         character.CurrentTile = this;
     }
 
+    /// <summary>
+    /// Removes the passed in character from this tile and sets the character's
+    /// current tile to null.
+    /// </summary>
     public void RemoveCharacter(Character character)
     {
         CurrentCharacters.Remove(character);
