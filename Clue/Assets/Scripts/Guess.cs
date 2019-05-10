@@ -18,5 +18,12 @@ public class Guess
     public Weapon Weapon { get; private set; }
     public Room Room { get; private set; }
 
+    public Guess(Character character, Weapon weapon, Room room)
+    {
+        Character = character;
+        Weapon = weapon;
+        Room = room;
+    }
+
     #endregion
 }

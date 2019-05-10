@@ -21,7 +21,7 @@ public class Room : MonoBehaviour
 
     #region Inspector Variables
 
-    [SerializeField] private string roomName = "Default Room Name";
+    [SerializeField] public string Name = "Default Room Name";
     [SerializeField] private Room secretPassage;
 
     #endregion
@@ -107,7 +107,7 @@ public class Room : MonoBehaviour
     {
         if(roomTiles.Length == 0)
         {
-            Debug.LogError("There are no object positions for: " + roomName);
+            Debug.LogError("There are no object positions for: " + Name);
             return null;
         }
 

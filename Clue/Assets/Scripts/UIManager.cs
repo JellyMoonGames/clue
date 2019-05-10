@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -85,6 +86,27 @@ public class UIManager : MonoBehaviour
         characterSelection.DisableCharacterButton(character.Name);
 
         CharacterSelection.CurrentNumberOfPlayers++;
+    }
+
+    public void ChangeGuessState(string gameState)
+    {
+        GuessManager.CurrentGuessState = (GuessState) Enum.Parse(typeof(GuessState), gameState);
+    }
+
+    public void MakeGuess()
+    {
+        RoomTile roomTile = TurnManager.CurrentCharacter.CurrentTile as RoomTile;
+        Room targetRoom = null;
+
+        try { targetRoom = roomTile.transform.parent.parent.GetComponent<Room>(); }
+        catch { }
+
+        if(targetRoom.Name == GuessManager.CurrentRoom.Name &&
+           targetRoom.CurrentCharacters.Contains(GuessManager.CurrentCharacter) &&
+           targetRoom.CurrentWeapons.Contains(GuessManager.CurrentWeapon))
+        {
+            GameManager.MakeGuess(GuessManager.MakeGuess());
+        }
     }
 
     /// <summary>

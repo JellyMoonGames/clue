@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4868206935301973122}
   - component: {fileID: 4207558181191740082}
   - component: {fileID: 2829901624893817035}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: sprite_Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignLayerMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 1024
   attachedRoom: {fileID: 0}
 --- !u!114 &4908523668652187922
 MonoBehaviour:

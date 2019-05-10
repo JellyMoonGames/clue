@@ -73,6 +73,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe24db39984fd1c45a07ea4ee1957f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assignLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &906901709532301612
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe24db39984fd1c45a07ea4ee1957f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assignLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &906901709582066173
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,6 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe24db39984fd1c45a07ea4ee1957f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assignLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &906901709801607737
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +211,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe24db39984fd1c45a07ea4ee1957f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assignLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &906901709914748265
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,6 +257,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe24db39984fd1c45a07ea4ee1957f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assignLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &906901710028800981
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,6 +303,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe24db39984fd1c45a07ea4ee1957f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assignLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &906901710124144767
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,6 +349,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe24db39984fd1c45a07ea4ee1957f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assignLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &906901710147920849
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,6 +395,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe24db39984fd1c45a07ea4ee1957f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assignLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &906901710538322966
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,6 +408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 906901710538322965}
   - component: {fileID: 906901710538322964}
+  - component: {fileID: 752253293821204599}
   m_Layer: 0
   m_Name: prefab_Room
   m_TagString: Untagged
@@ -421,6 +446,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomName: Test Room
   secretPassage: {fileID: 0}
+--- !u!114 &752253293821204599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906901710538322966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f949780fb4449ce4f80257deae989414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3118205904316166877
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,6 +501,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe24db39984fd1c45a07ea4ee1957f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assignLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &5277059524065784969
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,6 +547,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe24db39984fd1c45a07ea4ee1957f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assignLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &5380383824410586405
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,6 +635,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe24db39984fd1c45a07ea4ee1957f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assignLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &8619530230637194799
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,3 +681,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe24db39984fd1c45a07ea4ee1957f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assignLayerMask:
+    serializedVersion: 2
+    m_Bits: 0

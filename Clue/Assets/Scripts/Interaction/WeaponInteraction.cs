@@ -25,6 +25,8 @@ public class WeaponInteraction : Interaction
 
     public override void PrimaryButton()
     {
+        if(GuessManager.CurrentGuessState != GuessState.Weapon) return;
+
         GameManager.GameState = GameState.Interaction;
 
         if(GameManager.GameState == GameState.Interaction)

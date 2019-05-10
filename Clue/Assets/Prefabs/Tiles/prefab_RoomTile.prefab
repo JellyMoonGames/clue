@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4868206935301973122}
   - component: {fileID: 4207558181191740082}
   - component: {fileID: 8272840223185870087}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: sprite_Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6409279780758963082}
   - component: {fileID: 1016199409011283821}
-  - component: {fileID: 4392696384672872282}
   m_Layer: 8
   m_Name: prefab_RoomTile
   m_TagString: Untagged
@@ -153,16 +152,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignLayerMask:
     serializedVersion: 2
-    m_Bits: 55
---- !u!114 &4392696384672872282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9007433890508580760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e448398fb5c9bf4e88243cac9c95667, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+    m_Bits: 1024

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4868206935301973122}
   - component: {fileID: 4207558181191740082}
   - component: {fileID: 4971609464856161512}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: sprite_Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignLayerMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 1024
 --- !u!61 &4331744960372226292
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -161,7 +161,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9007433890508580760}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
