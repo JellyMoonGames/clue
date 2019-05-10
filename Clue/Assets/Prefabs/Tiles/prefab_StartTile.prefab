@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4868206935301973122}
   - component: {fileID: 4207558181191740082}
+  - component: {fileID: 2423419430755240371}
   m_Layer: 0
   m_Name: sprite_Square
   m_TagString: Untagged
@@ -79,6 +80,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &2423419430755240371
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5614611932184530188}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 0.2}
+  m_EdgeRadius: 0
 --- !u!1 &9007433890508580760
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,8 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6409279780758963082}
   - component: {fileID: 338400762303455124}
-  - component: {fileID: 3634917502534139995}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: prefab_StartTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,33 +150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 003581940c415574fb3e9238e1143b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upNeighbour: {fileID: 0}
-  downNeighbour: {fileID: 0}
-  leftNeighbour: {fileID: 0}
-  rightNeighbour: {fileID: 0}
---- !u!61 &3634917502534139995
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9007433890508580760}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.2}
-  m_EdgeRadius: 0
+  assignLayerMask:
+    serializedVersion: 2
+    m_Bits: 55

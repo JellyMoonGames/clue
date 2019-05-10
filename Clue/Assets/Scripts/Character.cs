@@ -16,7 +16,7 @@ public class Character : BoardPiece
     #region Public Properties
 
     public string Name { get { return characterName; } set { characterName = value; } }
-    public PlayerType Type { get; private set; }
+    public PlayerType Type { get; set; }
     public bool IsInRoom { get; set; }
     public int CurrentNumberOfMoves { get { return tileStack.Count - 1; } }
     public Tile CurrentTile { get; set; }
@@ -28,13 +28,15 @@ public class Character : BoardPiece
     #region Inspector Variables
 
     [SerializeField] private string characterName = "Default Character Name";
-    [SerializeField] private Sprite characterImage;
+    public Sprite characterImage;
+    public GameObject detectivePanel;
 
     #endregion
 
     #region Private Variables
 
     private Stack<Tile> tileStack = new Stack<Tile>();
+    private bool runOnce_AIMovement = false;
 
     #endregion
 
@@ -47,6 +49,10 @@ public class Character : BoardPiece
         PreviousTile = CurrentTile;
         CurrentTile.AddCharacter(this);
         tileStack.Push(CurrentTile);
+
+        detectivePanel.transform.parent = FindObjectOfType<Canvas>().transform;
+        detectivePanel.transform.localScale = new Vector3(1f, 1f, 1f);
+        detectivePanel.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
     }
 
     private void Update()
@@ -57,10 +63,28 @@ public class Character : BoardPiece
             return;
         }
 
-        if(Input.GetButtonDown("Up"))           Move(CurrentTile.GetNeighbour("Up"));
-        else if(Input.GetButtonDown("Down"))    Move(CurrentTile.GetNeighbour("Down"));
-        else if(Input.GetButtonDown("Left"))    Move(CurrentTile.GetNeighbour("Left"));
-        else if(Input.GetButtonDown("Right"))   Move(CurrentTile.GetNeighbour("Right"));
+        if(Type == PlayerType.Player)
+        {
+            PlayerMotor playerMotor = Motor as PlayerMotor;
+            Tile targetTile = playerMotor.ProcessMovement();
+            Move(targetTile);
+        }
+        else if(Type == PlayerType.AI && runOnce_AIMovement == false)
+        {
+            AIMotor aiMotor = Motor as AIMotor;
+            int randomMoveAmount = Random.Range(1, TurnManager.CurrentRollAmount);
+            Debug.Log(randomMoveAmount);
+
+            for(int i = 0; i < randomMoveAmount; i++)
+            {
+                Tile targetTile = aiMotor.ProcessMovement();
+                Move(targetTile);
+                Debug.Log("MOVEMENT TICK");
+            }
+
+            TurnManager.EndTurn();
+            runOnce_AIMovement = true;
+        }
     }
 
     /// <summary>
@@ -115,6 +139,7 @@ public class Character : BoardPiece
         tileStack.Clear();
         tileStack.Push(CurrentTile);
         PreviousTile = CurrentTile;
+        runOnce_AIMovement = false;
     }
 
     #endregion

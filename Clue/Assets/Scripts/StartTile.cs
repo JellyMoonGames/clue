@@ -21,11 +21,22 @@ public class StartTile : Tile
     /// <summary>
     /// Spawns the passed in character on this tile, being controlled by the passed in motor.
     /// </summary>
-    public void SpawnCharacter(Character character, Motor motor)
+    public void SpawnCharacter(Character character, string motor)
     {
         Character characterClone = Instantiate(character, transform.position, Quaternion.identity);
         AddCharacter(characterClone);
-        characterClone.Motor = motor;
+
+        if(motor == "Player")
+        {
+            characterClone.Type = PlayerType.Player;
+            characterClone.Motor = characterClone.gameObject.AddComponent<PlayerMotor>();
+        }
+
+        else if(motor == "AI")
+        {
+            characterClone.Type = PlayerType.AI;
+            characterClone.Motor = characterClone.gameObject.AddComponent<AIMotor>();
+        }
     }
 
     #endregion

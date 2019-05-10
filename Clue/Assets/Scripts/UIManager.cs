@@ -10,9 +10,9 @@ public class UIManager : MonoBehaviour
 
     #region Inspector Variables
 
-    [SerializeField] private GameObject detectivePanel;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private Text currentCharacterText;
+    [SerializeField] private RawImage currentCharacterImage;
     [SerializeField] private Text numberOfMovesText;
     [SerializeField] private Slider masterVolumeSlider;
     [SerializeField] private Slider musicVolumeSlider;
@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
     {
         if(Input.GetButtonDown("Detective Panel"))
         {
-            if(detectivePanel) ToggleObject(detectivePanel);
+            if(TurnManager.CurrentCharacter.detectivePanel) ToggleObject(TurnManager.CurrentCharacter.detectivePanel);
         }
 
         if(Input.GetButtonDown("Pause"))
@@ -47,6 +47,7 @@ public class UIManager : MonoBehaviour
         if(currentCharacterText) currentCharacterText.text = "CURRENT CHARACTER: " + TurnManager.CurrentCharacter.Name.ToUpper();
         if(numberOfMovesText) numberOfMovesText.text = TurnManager.CurrentCharacter.CurrentNumberOfMoves.ToString() + "/" + TurnManager.CurrentRollAmount.ToString();
         if(masterVolumeSlider) AudioListener.volume = masterVolumeSlider.value;
+        if(currentCharacterImage) currentCharacterImage.texture = TurnManager.CurrentCharacter.characterImage.texture;
     }
 
     /// <summary>

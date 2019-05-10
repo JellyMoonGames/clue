@@ -20,7 +20,7 @@ public class TurnManager : MonoBehaviour
 
     #region Private Variables
 
-    private int currentIndex = -1;
+    private static int currentIndex = -1;
 
     #endregion
 
@@ -39,7 +39,7 @@ public class TurnManager : MonoBehaviour
     /// <summary>
     /// Called when the character ends its turn and checks what tile it is on.
     /// </summary>
-    public void EndTurn()
+    public static void EndTurn()
     {
         if(CurrentCharacter.CurrentNumberOfMoves > CurrentRollAmount)
         {
@@ -61,13 +61,15 @@ public class TurnManager : MonoBehaviour
             room.EnterRoom(CurrentCharacter);
         }
 
+        CurrentCharacter.detectivePanel.SetActive(false);
+
         NextCharacter();
     }
 
     /// <summary>
     /// Assigns the current character to the next one in the character index.
     /// </summary>
-    private void NextCharacter()
+    private static void NextCharacter()
     {
         if(currentIndex + 1 > GameManager.Characters.Length - 1)
         {

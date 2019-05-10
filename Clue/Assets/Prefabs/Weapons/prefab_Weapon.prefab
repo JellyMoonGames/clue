@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 292381488364592378}
   - component: {fileID: 2204634844488081023}
   - component: {fileID: 2444483373358408271}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: prefab_Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5957175757767495081}
   - component: {fileID: 5872064442406991111}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: sprite_Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

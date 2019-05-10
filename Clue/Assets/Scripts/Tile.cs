@@ -25,6 +25,8 @@ public class Tile : MonoBehaviour
     protected Tile leftNeighbour;
     protected Tile rightNeighbour;
 
+    [SerializeField] LayerMask assignLayerMask;
+
     #endregion
 
     #region Methods
@@ -73,23 +75,23 @@ public class Tile : MonoBehaviour
             switch(d)
             {
                 case 0:
-                    hit = Physics2D.CircleCast(transform.position + new Vector3(0f, 1f, 0f), 0.01f, Vector2.zero);
-                    if(hit) { neighbour = hit.transform.GetComponent<Tile>(); upNeighbour = neighbour; }
+                    hit = Physics2D.CircleCast(transform.position + new Vector3(0f, 1f, 0f), 0.01f, Vector2.zero, assignLayerMask);
+                    if(hit) { neighbour = hit.transform.parent.GetComponent<Tile>(); upNeighbour = neighbour; }
                 break;
 
                 case 1:
-                    hit = Physics2D.CircleCast(transform.position + new Vector3(0f, -1f, 0f), 0.01f, Vector2.zero);
-                    if(hit) { neighbour = hit.transform.GetComponent<Tile>(); downNeighbour = neighbour; }
+                    hit = Physics2D.CircleCast(transform.position + new Vector3(0f, -1f, 0f), 0.01f, Vector2.zero, assignLayerMask);
+                    if(hit) { neighbour = hit.transform.parent.GetComponent<Tile>(); downNeighbour = neighbour; }
                     break;
 
                 case 2:
-                    hit = Physics2D.CircleCast(transform.position + new Vector3(-1f, 0f, 0f), 0.01f, Vector2.zero);
-                    if(hit) { neighbour = hit.transform.GetComponent<Tile>(); leftNeighbour = neighbour; }
+                    hit = Physics2D.CircleCast(transform.position + new Vector3(-1f, 0f, 0f), 0.01f, Vector2.zero, assignLayerMask);
+                    if(hit) { neighbour = hit.transform.parent.GetComponent<Tile>(); leftNeighbour = neighbour; }
                     break;
 
                 case 3:
-                    hit = Physics2D.CircleCast(transform.position + new Vector3(1f, 0f, 0f), 0.01f, Vector2.zero);
-                    if(hit) { neighbour = hit.transform.GetComponent<Tile>(); rightNeighbour = neighbour; }
+                    hit = Physics2D.CircleCast(transform.position + new Vector3(1f, 0f, 0f), 0.01f, Vector2.zero, assignLayerMask);
+                    if(hit) { neighbour = hit.transform.parent.GetComponent<Tile>(); rightNeighbour = neighbour; }
                     break;
             }
         }

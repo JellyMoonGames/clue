@@ -59,15 +59,19 @@ public class BoardSetup : MonoBehaviour
             StartTile currentStartTile = startTiles[startTileIndexCount];
             startTileIndexCount++;
 
-            Motor motor = null;
+            string motorType = null;
 
             foreach(Character chosenCharacter in CharacterSelection.ChosenCharacters)
             {
-                if(characters[i].Name == chosenCharacter.Name) motor = new PlayerMotor();
-                else motor = new AIMotor();
+                if(characters[i].Name == chosenCharacter.Name)
+                {
+                    motorType = "Player";
+                    break;
+                }
+                else motorType = "AI";
             }
 
-            currentStartTile.SpawnCharacter(characters[i], motor); 
+            currentStartTile.SpawnCharacter(characters[i], motorType); 
         }
     }
 

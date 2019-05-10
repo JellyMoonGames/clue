@@ -64,7 +64,7 @@ public class Room : MonoBehaviour
     {
         if(CurrentCharacters.Contains(character) == false)
         {
-            Debug.LogError("The character wasn't in the room");
+            Debug.Log("The character wasn't in the room");
             return;
         }
 

@@ -58,9 +58,9 @@ public class CharacterSelection : MonoBehaviour
         Debug.Log("Current:" + CurrentNumberOfPlayers);
         Debug.Log("Max: " + NumberOfPlayers);
 
-        foreach(Character character in ChosenCharacters)
+        foreach(Character c in ChosenCharacters)
         {
-            Debug.Log(character);
+            Debug.Log(c);
         }
 
         if(CurrentNumberOfPlayers >= NumberOfPlayers && runOnce_DisableCharacterSelection == false && HasSetNumberOfPlayers)
